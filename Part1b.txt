@@ -1,0 +1,6 @@
+from hub import light_matrix
+
+def hello():
+    light_matrix.write('Hello, World!')
+
+hello()

@@ -1,0 +1,6 @@
+from hub import light_matrix
+
+def hello(name):
+    light_matrix.write('Team ' + name + '!')
+
+hello('Mercs')   # can I change the text to whatever I want?
