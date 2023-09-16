@@ -1,0 +1,11 @@
+from hub import button, light_matrix
+import runloop
+
+async def main():
+    variable = False
+    if variable:
+        await light_matrix.write('True')
+    else:
+        await light_matrix.write('False')
+
+runloop.run(main())

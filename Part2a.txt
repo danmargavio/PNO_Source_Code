@@ -1,0 +1,8 @@
+from hub import light_matrix
+import runloop
+
+async def main():
+    # Write your program here.
+    light_matrix.show_image(light_matrix.IMAGE_GHOST)
+
+runloop.run(main())

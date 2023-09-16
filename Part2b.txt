@@ -1,0 +1,11 @@
+from hub import light_matrix
+import runloop, time
+
+async def main():
+    while True:
+        await light_matrix.write('/')
+        await runloop.sleep_ms(1000)
+        await light_matrix.write('\\')
+        await runloop.sleep_ms(1000)
+
+runloop.run(main())

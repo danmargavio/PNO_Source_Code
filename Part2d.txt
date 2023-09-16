@@ -1,0 +1,15 @@
+from hub import button, light_matrix
+import runloop
+
+async def main():
+    while True:
+        if button.pressed(button.LEFT):      #This checks to see if the left button was pressed and only runs the next code if it was
+            light_matrix.write('LEFT')
+            await runloop.sleep_ms(2500)     #This waits for 2500 seconds or 2.5 seconds before doing the next thing
+        elif button.pressed(button.RIGHT):   #This checks to see if the right button was pressed
+            light_matrix.write('RIGHT')
+            await runloop.sleep_ms(2500)
+        else:
+            light_matrix.clear()
+
+runloop.run(main())
