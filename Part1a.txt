@@ -1,0 +1,3 @@
+from hub import light_matrix
+
+light_matrix.write('Hello, World!')
