@@ -1,0 +1,19 @@
+from hub import motion_sensor, port
+import runloop, motor_pair
+
+async def main():
+
+    # Pair motors on port A and B
+    motor_pair.pair(motor_pair.PAIR_1, port.A, port.B)
+    [starting_angle, B, C] = motion_sensor.tilt_angles()
+    A = starting_angle
+    print (A)# these numbers are in tenths of a degree
+
+    while (A > starting_angle - 450):
+
+        # Turn until the angle is 45 degrees away from the starting position (this is 450 because it is in decidegrees)
+        await motor_pair.move_for_time(motor_pair.PAIR_1, 100, 100)
+        [A, B, C] = motion_sensor.tilt_angles()
+
+    print (A)# these numbers are in tenths of a degree
+runloop.run(main())

@@ -1,0 +1,9 @@
+from hub import port, light_matrix
+import color_sensor, color, runloop
+
+async def main():
+    while True:
+        if color_sensor.color(port.E) is color.BLACK:
+            await light_matrix.write("BLACK DETECTED!")
+
+runloop.run(main())

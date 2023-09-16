@@ -1,0 +1,10 @@
+from hub import motion_sensor
+import runloop, time
+
+async def main():
+
+    while True:
+        [A, B, C] = motion_sensor.tilt_angles()
+        print (A)  # these numbers are in tenths of a degree
+        time.sleep_ms(500)
+runloop.run(main())

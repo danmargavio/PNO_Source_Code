@@ -1,0 +1,12 @@
+from hub import button, light_matrix
+import runloop
+
+async def main():
+    while True:
+        if (button.pressed(button.RIGHT) and button.pressed(button.LEFT)):
+            light_matrix.write('BOTH')
+            await runloop.sleep_ms(2500)
+        else:
+            light_matrix.clear()
+
+runloop.run(main())

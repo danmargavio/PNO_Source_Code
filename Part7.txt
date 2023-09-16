@@ -1,0 +1,27 @@
+from hub import port, light_matrix, motion_sensor, button
+import runloop, motor, motor_pair, color, time
+
+async def main():
+    # Pair motors on port A and B
+    motor_pair.pair(motor_pair.PAIR_1, port.A, port.B)
+    # light_matrix.write("Hello World")    #basic light matrix example
+    
+    while True:
+        if (button.pressed(button.RIGHT) and button.pressed(button.LEFT)):
+            await runloop.sleep_ms(2000)
+            # CODE WILL RUN 2 SECONDS AFTER YOU PRESS BOTH BUTTONS
+
+            ###  YOUR SOFTWARE SHOULD START HERE  ###
+
+            # MOVE FORWARD FOR 1 SECOND AT 300 DEGREES PER SECOND
+            await motor_pair.move_for_time(motor_pair.PAIR_1, 1000, 0, velocity = 300)
+
+            # TURN FOR 1 SECOND
+            await motor_pair.move_for_time(motor_pair.PAIR_1, 1000, 100)
+
+            # MOVE BACKWARD FOR 1 SECOND AT 300 DEGREES PER SECOND
+            await motor_pair.move_for_time(motor_pair.PAIR_1, 1000, 0, velocity = -300)
+
+            ###  YOUR SOFTWARE SHOULD END HERE  ###
+
+runloop.run(main())
